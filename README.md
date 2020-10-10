@@ -11,9 +11,7 @@
 | lastname       | string  | null: false |
 | firstname_kana | string  | null: false |
 | lastname_kana  | string  | null: false |
-| birthyear      | integer | null: false |
-| birthmounth    | integer | null: false |
-| birthday       | integer | null: false |
+| birthday       | date    | null: false |
 
 ### Association
 
@@ -25,7 +23,6 @@
 
 | Column      | Type    | Options     |
 | ----------- | ------- | ----------- |
-| image       | string  | null: false |
 | name        | string  | null: false |
 | description | string  | null: false |
 | catagory    | string  | null: false |
@@ -41,14 +38,10 @@
 - has_one :purchace
 - has_one :shipping_address
 
-## purchases テーブル
+## purchases テーブル 　※カード情報は保存
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
-| credit_number   | integer    | null: false                    |
-| limit_year      | inteder    | null: false                    |
-| limit_month     | integer    | null: false                    |
-| security_code   | integer    | null: false                    |
 | user            | references | null: false, foreign_key: true |
 | item            | references | null: false, foreign_key: true |
 
@@ -63,13 +56,13 @@
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
 | postcode         | string     | null: false                    |
-| prefectures      | references | null: false                    |
+| prefectures      | integer    | null: false                    |
 | municipality     | references | null: false                    |
 | address          | string     | null: false                    |
 | building_name    | references |                                |
 | phone_number     | string     | null: false                    |
-| user            | references | null: false, foreign_key: true |
-| item            | references | null: false, foreign_key: true |
+| user             | references | null: false, foreign_key: true |
+| item             | references | null: false, foreign_key: true |
 
 ### Association
 
