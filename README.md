@@ -25,10 +25,10 @@
 | ----------- | ------- | ----------- |
 | name        | string  | null: false |
 | description | string  | null: false |
-| catagory    | string  | null: false |
-| status      | string  | null: false |
-| beard       | string  | null: false |
-| area        | string  | null: false |
+| catagory    | integer | null: false |
+| status      | integer | null: false |
+| beard       | integer | null: false |
+| area        | integer | null: false |
 | days        | integer | null: false |
 | price       | integer | null: false |
 
@@ -61,8 +61,7 @@
 | address          | string     | null: false                    |
 | building_name    | references |                                |
 | phone_number     | string     | null: false                    |
-| user             | references | null: false, foreign_key: true |
-| item             | references | null: false, foreign_key: true |
+| purchase_id      | references | null: false, foreign_key: true |
 
 ### Association
 
