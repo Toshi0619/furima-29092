@@ -17,7 +17,6 @@
 
 - has_many :items
 - has_many :purchases
-- has_many :shipping_address
 
 ## items テーブル
 
@@ -36,7 +35,6 @@
 
 - belongs_to :user
 - has_one :purchace
-- has_one :shipping_address
 
 ## purchases テーブル 　※カード情報は保存
 
@@ -49,7 +47,7 @@
 
 - belongs_to :user
 - has_one :item
-- has_one :shipping_address
+- has_many :shipping_addresses
 
 ## shipping_addresses テーブル
 
@@ -57,14 +55,12 @@
 | ---------------- | ---------- | ------------------------------ |
 | postcode         | string     | null: false                    |
 | prefectures      | integer    | null: false                    |
-| municipality     | references | null: false                    |
+| municipality     | string     | null: false                    |
 | address          | string     | null: false                    |
-| building_name    | references |                                |
+| building_name    | string     |                                |
 | phone_number     | string     | null: false                    |
 | purchase_id      | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :user
-- has_one :item
-- has_one :purchase
+- belongs_to :purchase
