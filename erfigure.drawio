@@ -1,4 +1,4 @@
-<mxfile host="65bd71144e" modified="2020-10-11T07:01:50.528Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.49.1 Chrome/83.0.4103.122 Electron/9.2.1 Safari/537.36" etag="wJgrIqvFTkhn9rvBNQOm" version="13.6.5">
+<mxfile host="65bd71144e" modified="2020-10-11T07:23:37.958Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.49.1 Chrome/83.0.4103.122 Electron/9.2.1 Safari/537.36" etag="p6jmZctU8l1Uv1HPQKBK" version="13.6.5">
     <diagram id="rELO_ynSzaifTVoMeoe0" name="ページ1">
         <mxGraphModel dx="898" dy="464" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
@@ -21,7 +21,7 @@
                 <mxCell id="2" value="users（ユーザーテーブル）&lt;br&gt;&lt;br&gt;nickname : ニックネーム&lt;br&gt;email : メールアドレス&lt;br&gt;password : パスワード&lt;br&gt;first-name : 苗字&lt;br&gt;last-name : 名前&lt;br&gt;first-name-kana : 苗字（カナ）&lt;br&gt;last-name-kana : 名前（カナ）&lt;br&gt;birthday : 生年月日" style="whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontColor=#000000;" parent="1" vertex="1">
                     <mxGeometry x="20" y="12" width="220" height="250" as="geometry"/>
                 </mxCell>
-                <mxCell id="3" value="items（商品テーブル）&lt;br&gt;&lt;br&gt;price : 価格&lt;br&gt;description : 商品の説明&lt;br&gt;category : カテゴリー&lt;br&gt;status : 商品の状態&lt;br&gt;beared : 配送料の負担&lt;br&gt;area : 発送元の地域&lt;br&gt;days : 発送までの日数&lt;br&gt;　price : 価格&lt;br&gt;user : 出品ユーザーID" style="whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;" parent="1" vertex="1">
+                <mxCell id="3" value="items（商品テーブル）&lt;br&gt;&lt;br&gt;price : 価格&lt;br&gt;description : 商品の説明&lt;br&gt;category_id : カテゴリー&lt;br&gt;status_id&amp;nbsp;&amp;nbsp;: 商品の状態&lt;br&gt;beared_id&amp;nbsp;: 配送料の負担&lt;br&gt;area _id : 発送元の地域&lt;br&gt;days _id : 発送までの日数&lt;br&gt;　price : 価格&lt;br&gt;user : 出品ユーザーID" style="whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#000000;" parent="1" vertex="1">
                     <mxGeometry x="500" y="30" width="190" height="190" as="geometry"/>
                 </mxCell>
                 <mxCell id="17" style="edgeStyle=none;shape=flexArrow;rounded=0;jumpSize=13;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;fontColor=#000000;endWidth=6;endSize=0.16;" parent="1" source="9" target="3" edge="1">
