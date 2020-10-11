@@ -20,16 +20,17 @@
 
 ## items テーブル
 
-| Column      | Type    | Options     |
-| ----------- | ------- | ----------- |
-| name        | string  | null: false |
-| description | string  | null: false |
-| catagory    | integer | null: false |
-| status      | integer | null: false |
-| beard       | integer | null: false |
-| area        | integer | null: false |
-| days        | integer | null: false |
-| price       | integer | null: false |
+| Column      | Type       | Options                        |
+| ----------- | ---------- | ------------------------------ |
+| name        | string     | null: false                    |
+| description | text       | null: false                    |
+| catagory    | integer    | null: false                    |
+| status      | integer    | null: false                    |
+| beard       | integer    | null: false                    |
+| area        | integer    | null: false                    |
+| days        | integer    | null: false                    |
+| price       | integer    | null: false                    |
+| user        | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -38,16 +39,16 @@
 
 ## purchases テーブル 　※カード情報は保存
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| user            | references | null: false, foreign_key: true |
-| item            | references | null: false, foreign_key: true |
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- has_one :item
-- has_many :shipping_addresses
+- belongs_to :item
+- has_one :shipping_address
 
 ## shipping_addresses テーブル
 
