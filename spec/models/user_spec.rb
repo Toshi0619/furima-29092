@@ -78,6 +78,12 @@ describe User do
         @user.valid?
         expect('Password include both letters and numbers')
       end
+      it 'passwordは半角数字のみでは登録できない' do
+        @user.password = '8938393'
+        @user.password_confirmation = '8938393'
+        @user.valid?
+        expect('Password include both letters and numbers')
+      end
       it 'passwordが存在してもpassword_confirmationが空では登録できない' do
         @user.password_confirmation = ''
         @user.valid?
