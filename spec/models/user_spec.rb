@@ -89,20 +89,40 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
+      it 'firstnameが空では登録できない' do
+        @user.firstname = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Firstname can't be blank")
+      end
       it 'firstnameが全角でなければ登録できない' do
         @user.firstname = 'suzuki'
         @user.valid?
         expect(@user.errors.full_messages).to include('Firstname is invalid.Input full-width characters.')
+      end
+      it 'lastnameが空では登録できない' do
+        @user.lastname = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Lastname can't be blank")
       end
       it 'lastnameが全角でなければ登録できない' do
         @user.lastname = 'takashi'
         @user.valid?
         expect(@user.errors.full_messages).to include('Lastname is invalid.Input full-width characters.')
       end
+      it 'firstname_kanaが空では登録できない' do
+        @user.firstname_kana = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Firstname kana can't be blank")
+      end
       it 'firstname_kanaが全角（カタカナ）でなければ登録できない' do
         @user.firstname_kana = '阿部'
         @user.valid?
         expect(@user.errors.full_messages).to include('Firstname kana is invalid. Input full-width katakana characters.')
+      end
+      it 'lastname_kanaが空では登録できない' do
+        @user.lastname_kana = ''
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Lastname kana can't be blank")
       end
       it 'lastname_kanaが全角（カタカナ）でなければ登録できない' do
         @user.lastname_kana = '隆'
