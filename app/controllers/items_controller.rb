@@ -5,15 +5,15 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new # インスタンスを生成（テーブルに格納する箱を生成）
+    @item = Item.new # インスタンスを生成（テーブルに格納する箱を生成）、form_withにモデルのクラスを渡す。
   end
 
   def create
     @item = Item.create(item_params) #データを保存する
-    if @user.save #保存されるとリダイレクトされるのでビューファイルはいらない
+    if @item.save #保存されるとリダイレクトされるのでビューファイルはいらない
       redirect_to action: :index
     else #保存できなければ、newからやり直し
-      action: :new    
+      render action: :new    
     end
   end
 
@@ -24,5 +24,6 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    paramas.require(:item).permit(:image, :name, :description, :catagory_id, :status_id, :beard_id, :area_id, :days_id, :price, :user)
+    params.require(:item).permit(:image, :name, :description, :category_id, :status_id, :beard_id, :area_id, :days_id, :price).merge(user_id: current_user.id)
+  end
 end
