@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Item , tupe: :model do
+RSpec.describe Item, tupe: :model do
   before do
     @item = FactoryBot.build(:item)
   end
@@ -19,69 +19,69 @@ RSpec.describe Item , tupe: :model do
         expect(@item.errors.full_messages).to include("Image can't be blank")
       end
       it 'nameが空では登録できない' do
-        @item.name = ""
+        @item.name = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Name can't be blank")
       end
       it 'descriptionに@がないと登録できない' do
-        @item.description = ""
+        @item.description = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Description can't be blank")
       end
       it 'category_idが1(「--」)だと登録できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category status Select")
+        expect(@item.errors.full_messages).to include('Category status Select')
       end
       it 'status_idが1(「--」)だと登録できない' do
         @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status status Select")
+        expect(@item.errors.full_messages).to include('Status status Select')
       end
       it 'beard_idが1(「--」)だと登録できない' do
         @item.beard_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Beard status Select")
+        expect(@item.errors.full_messages).to include('Beard status Select')
       end
       it 'area_idが0(「--」)だと登録できない' do
         @item.area_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Area status Select")
+        expect(@item.errors.full_messages).to include('Area status Select')
       end
       it 'days_idが1(「--」)だと登録できない' do
         @item.days_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Days status Select")
+        expect(@item.errors.full_messages).to include('Days status Select')
       end
       it 'priceが空では登録できない' do
-        @item.price = ""
+        @item.price = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
       it 'priceが半角数字でなければ登録できない（全角文字で登録）' do
-        @item.price = "ああああああ"
+        @item.price = 'ああああああ'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Half-width number.", "Price Out of setting range")
+        expect(@item.errors.full_messages).to include('Price Half-width number.', 'Price Out of setting range')
       end
       it 'priceが半角数字でなければ登録できない（全角数字で登録）' do
-        @item.price = "３００"
+        @item.price = '３００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Half-width number.", "Price Out of setting range")
+        expect(@item.errors.full_messages).to include('Price Half-width number.', 'Price Out of setting range')
       end
       it 'priceが半角数字でなければ登録できない（半角英字で登録）' do
-        @item.price = "rud"
+        @item.price = 'rud'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Half-width number.", "Price Out of setting range")
+        expect(@item.errors.full_messages).to include('Price Half-width number.', 'Price Out of setting range')
       end
       it 'priceが300円未満ではが空では登録できない' do
-        @item.price = "299"
+        @item.price = '299'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Out of setting range")
+        expect(@item.errors.full_messages).to include('Price Out of setting range')
       end
       it 'priceが10000000円より大きい金額ではが空では登録できない' do
-        @item.price = "10000000"
+        @item.price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price Out of setting range")
+        expect(@item.errors.full_messages).to include('Price Out of setting range')
       end
     end
   end

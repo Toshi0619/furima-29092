@@ -9,19 +9,18 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.create(item_params) #データを保存する
-    if @item.save #保存されるとリダイレクトされるのでビューファイルはいらない
+    @item = Item.create(item_params) # データを保存する
+    if @item.save # 保存されるとリダイレクトされるのでビューファイルはいらない
       redirect_to action: :index
-    else #保存できなければ、newからやり直し
-      render action: :new    
+    else # 保存できなければ、newからやり直し
+      render action: :new
     end
   end
 
   # def calculation
   #   binding.pry
-    
-  # end
 
+  # end
 
   private
 
