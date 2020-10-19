@@ -17,6 +17,12 @@ class ItemsController < ApplicationController
     end
   end
 
+  # def calculation
+  #   binding.pry
+    
+  # end
+
+
   private
 
   def move_to_index
