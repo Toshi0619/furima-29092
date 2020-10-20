@@ -23,7 +23,7 @@ RSpec.describe Item, tupe: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Name can't be blank")
       end
-      it 'descriptionに@がないと登録できない' do
+      it 'descriptionが空では登録できない' do
         @item.description = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Description can't be blank")
