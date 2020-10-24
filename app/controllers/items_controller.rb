@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show] #showもついかしないとログインしてなければ、index画面に吹き飛ばされる
+  before_action :move_to_index, except: [:index, :show] # showもついかしないとログインしてなければ、index画面に吹き飛ばされる
   before_action :set_item, only: [:show]
 
   def index
@@ -21,7 +21,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    
   end
 
   def edit
