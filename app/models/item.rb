@@ -10,7 +10,7 @@ class Item < ApplicationRecord
     validates :status_id, numericality: { other_than: 1, message: 'status Select' }
     validates :beard_id, numericality: { other_than: 1, message: 'status Select' }
     validates :area_id, numericality: { other_than: 0, message: 'status Select' }
-    validates :days_id, numericality: { other_than: 1, message: 'status Select' }
+    validates :day_id, numericality: { other_than: 1, message: 'status Select' }
     validates :price
   end
 
