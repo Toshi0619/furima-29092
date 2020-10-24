@@ -38,6 +38,5 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
-    @user = User.find(@item.user_id)
   end
 end
