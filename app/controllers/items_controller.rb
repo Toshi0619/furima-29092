@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :move_to_index, except: [:index, :show] # showもついかしないとログインしてなければ、index画面に吹き飛ばされる
+  before_action :move_to_index, except: [:index, :show, :edit] # showもついかしないとログインしてなければ、index画面に吹き飛ばされる
   before_action :set_item, only: [:show, :edit, :update]
 
   def index
@@ -24,6 +24,13 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    unless user_signed_in?
+      redirect_to new_user_session_path
+    end
+
+    if user_signed_in? && current_user.id != @item.user_id
+      redirect_to root_path
+    end
   end
 
   def update
@@ -36,6 +43,10 @@ class ItemsController < ApplicationController
 
   private
 
+  def set_item
+    @item = Item.find(params[:id])
+  end
+
   def move_to_index
     redirect_to action: :index unless user_signed_in?
   end
@@ -44,7 +55,4 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:image, :name, :description, :category_id, :status_id, :beard_id, :area_id, :day_id, :price).merge(user_id: current_user.id)
   end
 
-  def set_item
-    @item = Item.find(params[:id])
-  end
 end
