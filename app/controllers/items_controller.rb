@@ -24,13 +24,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    unless user_signed_in?
-      redirect_to new_user_session_path
-    end
+    redirect_to new_user_session_path unless user_signed_in?
 
-    if user_signed_in? && current_user.id != @item.user_id
-      redirect_to root_path
-    end
+    redirect_to root_path if user_signed_in? && current_user.id != @item.user_id
   end
 
   def update
@@ -54,5 +50,4 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:image, :name, :description, :category_id, :status_id, :beard_id, :area_id, :day_id, :price).merge(user_id: current_user.id)
   end
-
 end
