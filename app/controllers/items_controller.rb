@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: [:index, :show, :edit] # showもついかしないとログインしてなければ、index画面に吹き飛ばされる
   before_action :set_item, only: [:show, :edit, :update]
+  before_action :authenticate_user!, only: [:edit]
+  before_action :move_to_root, only: [:edit]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -24,9 +26,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    redirect_to new_user_session_path unless user_signed_in?
+    # redirect_to new_user_session_path unless user_signed_in?
 
-    redirect_to root_path if user_signed_in? && current_user.id != @item.user_id
+    
   end
 
   def update
@@ -41,6 +43,10 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def move_to_root
+    redirect_to root_path if user_signed_in? && current_user.id != @item.user_id
   end
 
   def move_to_index
