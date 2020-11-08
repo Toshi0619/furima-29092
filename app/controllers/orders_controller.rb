@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create, :move_to_root]
   before_action :move_to_root, only: [:index, :create]
-  
 
   def index
     @item = Item.find(params[:item_id])
