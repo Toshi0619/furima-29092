@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
+  before_action :set_item, only: [:index, :create, :move_to_root]
   before_action :move_to_root, only: [:index, :create]
+  
 
   def index
     @item = Item.find(params[:item_id])
@@ -15,7 +17,6 @@ class OrdersController < ApplicationController
       redirect_to root_path
 
     else
-      @item = Item.find(params[:item_id])
       render action: :index
     end
   end
@@ -23,7 +24,6 @@ class OrdersController < ApplicationController
   private
 
   def pay_item
-    @item = Item.find(params[:item_id])
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
@@ -32,8 +32,11 @@ class OrdersController < ApplicationController
     )
   end
 
-  def move_to_root
+  def set_item
     @item = Item.find(params[:item_id])
+  end
+
+  def move_to_root
     redirect_to root_path if (user_signed_in? && current_user.id == @item.user_id) || @item.order.present?
 
     redirect_to root_path unless user_signed_in?
