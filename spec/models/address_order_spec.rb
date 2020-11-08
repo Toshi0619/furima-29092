@@ -71,10 +71,10 @@ RSpec.describe AddressOrder, type: :model do
         expect(@address_order.errors.full_messages).to include('Phone number Input only half number')
       end
       it 'phone_numberが12桁以上の数字だと保存できないこと' do
-        @address_order.phone_number = 123456789011
+        @address_order.phone_number = 123_456_789_011
         @address_order.valid?
         expect(@address_order.errors.full_messages).to include('Phone number Input only half number')
-      end 
+      end
     end
   end
 end

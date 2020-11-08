@@ -7,7 +7,6 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all.order('created_at DESC')
     # Itemテーブルから一覧データを取得
-
   end
 
   def new
@@ -50,7 +49,7 @@ class ItemsController < ApplicationController
   end
 
   def move_to_root
-    redirect_to root_path if (user_signed_in? && current_user.id != @item.user_id) or (@item.order.present?)
+    redirect_to root_path if (user_signed_in? && current_user.id != @item.user_id) || @item.order.present?
   end
 
   def move_to_index
