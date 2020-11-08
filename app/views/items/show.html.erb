@@ -10,9 +10,11 @@
       <%= image_tag @item.image ,class:"item-box-img" %>
       <%# 後ほど実装 %>
       <%# 商品が売れている場合は、sold outを表示しましょう %>
-      <%# <div class='sold-out'>
+      <% if @item.purchase.present? %>
+      <div class='sold-out'>
         <span>Sold Out!!</span>
-      </div> %>
+      </div>
+      <% end %>
       <%# //商品が売れている場合は、sold outを表示しましょう %>
       <%# ordersテーブルにitem_idのカラムに同じ商品IDがあれば表示させる %>
     </div>
@@ -27,13 +29,13 @@
 
     <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
 
-    <% if user_signed_in? && current_user.id == @item.user.id %>
+    <% if user_signed_in? && current_user.id == @item.user.id && @item.purchase.nil? %>
     <%= link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
     <p class='or-text'>or</p>
     <%= link_to '削除', "/items/#{@item.id}", method: :delete, class:'item-destroy' %>
     <% end %>
 
-    <% if user_signed_in? && current_user.id != @item.user.id %>
+    <% if user_signed_in? && current_user.id != @item.user.id && @item.purchase.nil? %>
     <%# 商品が売れていない場合はこちらを表示しましょう %>
     <%= link_to '購入画面に進む', item_orders_path(@item.id), method: :get, class:"item-red-btn"%>
     <%# //商品が売れていない場合はこちらを表示しましょう %>

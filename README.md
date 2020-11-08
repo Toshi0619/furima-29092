@@ -31,6 +31,7 @@
 | days_id     | integer    | null: false                    |
 | price       | integer    | null: false                    |
 | user        | references | null: false, foreign_key: true |
+| purchase    | integer    | null: false                    |
 
 ### Association
 
@@ -48,19 +49,19 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :shipping_address
+- has_one :shopaddress
 
-## shipping_addresses テーブル
+## shopaddresses テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
 | postcode         | string     | null: false                    |
-| prefectures      | integer    | null: false                    |
+| prefectures_id   | integer    | null: false                    |
 | municipality     | string     | null: false                    |
 | address          | string     | null: false                    |
 | building_name    | string     |                                |
 | phone_number     | string     | null: false                    |
-| purchase_id      | references | null: false, foreign_key: true |
+| orders            | references | null: false, foreign_key: true |
 
 ### Association
 
