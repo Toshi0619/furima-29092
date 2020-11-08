@@ -12,9 +12,6 @@ class OrdersController < ApplicationController
       pay_item
       @address_order.save
 
-      @item_purchaser = Item.find(params[:item_id])
-      @item_purchaser.update(purchase: current_user.id)
-
       redirect_to root_path
 
     else
@@ -37,11 +34,9 @@ class OrdersController < ApplicationController
 
   def move_to_root
     @item = Item.find(params[:item_id])
-    redirect_to root_path if user_signed_in? && current_user.id == @item.user_id
+    redirect_to root_path if (user_signed_in? && current_user.id == @item.user_id) or (@item.order.present?)
 
     redirect_to root_path unless user_signed_in?
-
-    redirect_to root_path if @item.purchase.present?
   end
 
   def address_order_params

@@ -10,7 +10,6 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :day_id
       t.integer :price
       t.references :user, foreign_key: true
-      t.integer :purchase
       t.timestamps
     end
   end

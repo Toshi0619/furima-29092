@@ -9,7 +9,7 @@ class AddressOrder
     validates :prefecture_id, numericality: { other_than: 0, message: 'Select' }
     validates :municipality
     validates :address
-    validates :phone_number, numericality: { with: /\A[0-9]+\z/, message: 'Input only half number' }
+    validates :phone_number, numericality: { less_than_or_equal_to: 99999999999, with: /\A[0-9]+\z/, message: 'Input only half number' }
   end
 
   def save

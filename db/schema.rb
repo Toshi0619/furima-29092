@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 2020_11_02_130544) do
     t.integer "day_id"
     t.integer "price"
     t.bigint "user_id"
-    t.integer "purchase"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_items_on_user_id"
