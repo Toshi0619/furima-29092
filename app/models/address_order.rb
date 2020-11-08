@@ -1,6 +1,6 @@
 class AddressOrder
   include ActiveModel::Model
-  attr_accessor :number, :exp_month, :exp_year, :cvc, :user_id, :item_id, :token, :postcode,  :prefecture_id, :municipality, :address, :building_name, :phone_number
+  attr_accessor :number, :exp_month, :exp_year, :cvc, :user_id, :item_id, :token, :postcode, :prefecture_id, :municipality, :address, :building_name, :phone_number
 
   validates :token, presence: true
 
@@ -11,8 +11,6 @@ class AddressOrder
     validates :address
     validates :phone_number, numericality: { with: /\A[0-9]+\z/, message: 'Input only half number' }
   end
-  
-  
 
   def save
     order = Order.create!(user_id: user_id, item_id: item_id, token: token)

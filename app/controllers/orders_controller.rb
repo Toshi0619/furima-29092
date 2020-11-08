@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
       @item_purchaser = Item.find(params[:item_id])
       @item_purchaser.update(purchase: current_user.id)
 
-      return redirect_to root_path
+      redirect_to root_path
 
     else
       @item = Item.find(params[:item_id])
@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
 
   def pay_item
     @item = Item.find(params[:item_id])
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: address_order_params[:token],

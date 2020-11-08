@@ -7,7 +7,6 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all.order('created_at DESC')
     # Itemテーブルから一覧データを取得
-  
   end
 
   def new
