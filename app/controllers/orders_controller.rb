@@ -3,7 +3,6 @@ class OrdersController < ApplicationController
   before_action :move_to_root, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
     @address_order = AddressOrder.new
   end
 
