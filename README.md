@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- has_many :purchases
+- has_many :orders
 
 ## items テーブル
 
@@ -31,13 +31,14 @@
 | days_id     | integer    | null: false                    |
 | price       | integer    | null: false                    |
 | user        | references | null: false, foreign_key: true |
+| purchase    | integer    | null: false                    |
 
 ### Association
 
 - belongs_to :user
-- has_one :purchace
+- has_one :order
 
-## purchases テーブル 　※カード情報は保存
+## orders テーブル 　※カード情報は保存
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
@@ -48,20 +49,20 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :shipping_address
+- has_one :shopaddress
 
-## shipping_addresses テーブル
+## shopaddresses テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
 | postcode         | string     | null: false                    |
-| prefectures      | integer    | null: false                    |
+| prefectures_id   | integer    | null: false                    |
 | municipality     | string     | null: false                    |
 | address          | string     | null: false                    |
 | building_name    | string     |                                |
 | phone_number     | string     | null: false                    |
-| purchase_id      | references | null: false, foreign_key: true |
+| order            | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :purchase
+- belongs_to :order

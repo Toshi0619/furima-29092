@@ -1,0 +1,56 @@
+const pay = () => {
+  Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
+  
+  const form = document.getElementById("charge-form");
+
+  form.addEventListener("submit", (e) => {
+
+    e.preventDefault();
+    
+    const formResult = document.getElementById("charge-form")
+    const formData = new FormData(formResult);
+
+    const card = {
+      // get("")の中を、order[~~]と指定すると現時点はモデルを渡していないのでエラーとなる。一旦、orderを渡さない形で設定。今後修正必要大。
+      number: formData.get("address_order[number]"),
+      exp_month: formData.get("address_order[exp_month]"),
+      exp_year: `20${formData.get("address_order[exp_year]")}`,
+      cvc: formData.get("address_order[cvc]"),
+    };
+
+
+    Payjp.createToken(card, (status, response) => {
+      if (status == 200){
+        const token = response.id;
+        const renderDom = document.getElementById("charge-form");
+        const tokenObj = `<input value=${token} name='token' type="hidden"> `;
+        renderDom.insertAdjacentHTML("beforeend", tokenObj);
+      }
+
+    
+      document.getElementById("card-number").removeAttribute("name");
+      document.getElementById("card-exp-month").removeAttribute("name");
+      document.getElementById("card-exp-year").removeAttribute("name");
+      document.getElementById("card-cvc").removeAttribute("name");
+
+      document.getElementById("charge-form").submit();
+
+    });
+
+    
+  });
+
+};
+
+window.addEventListener("load", pay);
+
+window.onload = function () {
+  document.getElementById("postal-code").removeAttribute("value");
+  const select = document.getElementById("prefecture")
+  select.selectedIndex = 0;
+  document.getElementById("city").removeAttribute("value");
+  document.getElementById("addresses").removeAttribute("value");
+  document.getElementById("building").removeAttribute("value");
+  document.getElementById("phone-number").removeAttribute("value");
+
+};
